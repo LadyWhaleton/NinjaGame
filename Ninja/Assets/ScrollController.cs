@@ -6,6 +6,7 @@ public class ScrollController : MonoBehaviour {
 
 	public int ninjasSafe= 0;
 	public int winNumber;
+	public bool goNextLevel = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,11 +18,13 @@ public class ScrollController : MonoBehaviour {
 
 		if (ninjasSafe == winNumber) {
 			print("GAME WON");
+			ninjasSafe = 0;
+			goNextLevel = true;
 		}
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.gameObject.tag == "ninja") {
+		if (coll.gameObject.tag == "ninja" && !goNextLevel) {
 			++ninjasSafe;
 		}
 
