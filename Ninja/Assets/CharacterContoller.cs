@@ -39,8 +39,7 @@ public class CharacterContoller : MonoBehaviour {
 
 	void FixedUpdate(){
 		float h = Input.GetAxis ("Horizontal");
-		previousVelocity = h;
-
+		Rigidbody2D.velocity = 1;
 		if (h > 0) { 
 			anim.SetFloat ("speed", 1);
 
@@ -51,9 +50,6 @@ public class CharacterContoller : MonoBehaviour {
 		if (h == 0) {
 			anim.SetFloat ("speed", 0);
 		}
-
-
-
 	}
 
 
