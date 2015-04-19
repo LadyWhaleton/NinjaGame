@@ -9,6 +9,9 @@ public class CharacterContoller : MonoBehaviour {
 	private Animator anim;
 	private bool jump = false;
 	private bool facingRight = true;
+	private bool dying = true;
+	private float h;
+	private bool touchedScroll = false;
 
 	public GameObject poofObj; 
 
@@ -30,6 +33,8 @@ public class CharacterContoller : MonoBehaviour {
 		if (!grounded && Mathf.Abs( GetComponent<Rigidbody2D>().velocity.y )<= 0.05f)
 		{
 			grounded = true;
+			anim.SetBool ("PressJump", false);
+
 
 		}
 
@@ -47,9 +52,13 @@ public class CharacterContoller : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		float h = Input.GetAxis ("Horizontal");
-		transform.Translate (Vector3.right * h * Movespeed*Time.deltaTime);
+		h = Input.GetAxis ("Horizontal");
+		if (!touchedScroll) {
+		
 
+			transform.Translate (Vector3.right * h * Movespeed * Time.deltaTime);
+
+		}
 
 		if (h > 0) { 
 			anim.SetFloat ("speed", 1);
@@ -81,16 +90,20 @@ public class CharacterContoller : MonoBehaviour {
 		}
 	}
 
+	IEnumerator pause(){
+		yield return new WaitForSeconds (1);
+		Destroy(this.gameObject);
+
+	}
+
+
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "scroll") {
-			//this.gameObject.animation.play("animationname");
-			Destroy(this.gameObject);
-			//this.GetComponent<Animation>().Play("Poof");
-			//poofObj.GetComponent<Animation>().Play("Poof");
-		
+			anim.SetBool ("touchScroll", true);
+			touchedScroll = true;
+			Destroy(GetComponent<Rigidbody2D>());
+			StartCoroutine (pause());
 		}
-
-		
 	}
 
 

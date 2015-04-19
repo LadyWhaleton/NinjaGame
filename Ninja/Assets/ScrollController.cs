@@ -17,7 +17,7 @@ public class ScrollController : MonoBehaviour {
 	void Update () {
 
 		if (ninjasSafe == winNumber) {
-			print("GAME WON");
+			print("Level completed!");
 			ninjasSafe = 0;
 			goNextLevel = true;
 		}
@@ -28,6 +28,7 @@ public class ScrollController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "ninja" && !goNextLevel) {
+			coll.collider.isTrigger = true;
 			++ninjasSafe;
 		}
 
