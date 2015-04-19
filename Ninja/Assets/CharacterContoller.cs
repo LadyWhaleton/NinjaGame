@@ -5,7 +5,7 @@ using System.Collections;
 
 public class CharacterContoller : MonoBehaviour {
 
-	public float speed;
+	public float Movespeed;
 	public float jumpForce;
 	private bool grounded = false;
 	private Animator anim;
@@ -27,7 +27,7 @@ public class CharacterContoller : MonoBehaviour {
 		currentVelocity = 0;
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -39,7 +39,8 @@ public class CharacterContoller : MonoBehaviour {
 
 	void FixedUpdate(){
 		float h = Input.GetAxis ("Horizontal");
-		Rigidbody2D.velocity = 1;
+		transform.Translate (Vector3.right * h * Movespeed*Time.deltaTime);
+
 		if (h > 0) { 
 			anim.SetFloat ("speed", 1);
 
