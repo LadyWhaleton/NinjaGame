@@ -90,19 +90,18 @@ public class CharacterContoller : MonoBehaviour {
 		}
 	}
 
+	/*
 	IEnumerator pause(){
 		yield return new WaitForSeconds (1);
 		Destroy(this.gameObject);
 
 	}
+	*/
 
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "scroll") {
-			anim.SetBool ("touchScroll", true);
-			touchedScroll = true;
-			Destroy(GetComponent<Rigidbody2D>());
-			StartCoroutine (pause());
+			Destroy (this.gameObject);
 		}
 	}
 
