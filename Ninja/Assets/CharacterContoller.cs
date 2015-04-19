@@ -10,8 +10,7 @@ public class CharacterContoller : MonoBehaviour {
 	private bool jump = false;
 	private bool facingRight = true;
 
-
-	bool isMoving;
+	public GameObject poofObj; 
 
 
 	void Awake(){
@@ -81,4 +80,20 @@ public class CharacterContoller : MonoBehaviour {
 			grounded = false;
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag == "scroll") {
+			//this.gameObject.animation.play("animationname");
+			Destroy(this.gameObject);
+			//this.GetComponent<Animation>().Play("Poof");
+			//poofObj.GetComponent<Animation>().Play("Poof");
+		
+		}
+
+		
+	}
+
+
+
+
 }

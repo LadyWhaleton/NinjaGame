@@ -48,7 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\CharacterContoller.cs" />
      <Compile Include="Assets\Idle.cs" />
+     <Compile Include="Assets\ScrollController.cs" />
      <Compile Include="Assets\WalkRight.cs" />
+     <Compile Include="Assets\playPoof.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
