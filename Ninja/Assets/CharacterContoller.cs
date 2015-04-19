@@ -10,6 +10,11 @@ public class CharacterContoller : MonoBehaviour {
 	private bool grounded = false;
 	private Animator anim;
 	private bool jump = false;
+	bool isMoving;
+	private float previousVelocity;
+	private float currentVelocity;
+
+
 
 	void Awake(){
 		anim = GetComponent<Animator> ();
@@ -17,6 +22,9 @@ public class CharacterContoller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		previousVelocity = 0;
+		currentVelocity = 0;
 
 	}
 	
@@ -31,16 +39,18 @@ public class CharacterContoller : MonoBehaviour {
 
 	void FixedUpdate(){
 		float h = Input.GetAxis ("Horizontal");
-		print (h);
+		previousVelocity = h;
 
-		if (h > 0) 
+		if (h > 0) { 
 			anim.SetFloat ("speed", 1);
-		else if (h < 0)
-			anim.SetFloat ("speed", -1);
-		else if (h == 0)
-			anim.SetFloat ("speed", 0);
-		
 
+		}
+		if (h < 0)
+			anim.SetFloat ("speed", -1);
+
+		if (h == 0) {
+			anim.SetFloat ("speed", 0);
+		}
 
 
 
