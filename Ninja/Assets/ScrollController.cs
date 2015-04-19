@@ -28,6 +28,7 @@ public class ScrollController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "ninja" && !goNextLevel) {
+			GetComponent<AudioSource>().Play();
 			coll.collider.isTrigger = true;
 			++ninjasSafe;
 		}
