@@ -30,16 +30,14 @@ public class CharacterContoller : MonoBehaviour {
 	void Update () {
 
 		// GetComponent<Rigidbody2D>().velocity.
-		if (!grounded && GetComponent<Rigidbody2D>().velocity.y <= 0)
+		if (!grounded && GetComponent<Rigidbody2D>().velocity.y == 0)
 		{
 			grounded = true;
-			anim.SetBool ("PressJump", false);
 
 		}
 
 		if( Input.GetButtonDown( "Jump" ) && grounded  ){
 			jump = true;
-
 		}
 
 	}
@@ -79,10 +77,10 @@ public class CharacterContoller : MonoBehaviour {
 
 
 		if (jump) {
-			grounded = false;
 			anim.SetBool ("PressJump", true);
 			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce ));
 			jump = false;
+			grounded = false;
 		}
 	}
 }
