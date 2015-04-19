@@ -21,6 +21,9 @@ public class ScrollController : MonoBehaviour {
 			ninjasSafe = 0;
 			goNextLevel = true;
 		}
+
+		if (goNextLevel)
+			Application.LoadLevel("Level2");
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
