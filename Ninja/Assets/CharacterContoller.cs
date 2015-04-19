@@ -10,6 +10,7 @@ public class CharacterContoller : MonoBehaviour {
 	private bool grounded = false;
 	private Animator anim;
 	private bool jump = false;
+	private bool facingRight = true;
 
 
 	bool isMoving;
@@ -44,6 +45,10 @@ public class CharacterContoller : MonoBehaviour {
 	}
 
 	void flip(){
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+
 	}
 
 	void FixedUpdate(){
@@ -52,10 +57,20 @@ public class CharacterContoller : MonoBehaviour {
 
 		if (h > 0) { 
 			anim.SetFloat ("speed", 1);
+			if(!facingRight){
+				facingRight = true;
+				flip ();
+			}
 
 		}
-		if (h < 0)
+		if (h < 0) {
 			anim.SetFloat ("speed", -1);
+
+			if (facingRight) {
+				facingRight = false;
+				flip ();
+			}
+		}
 
 		if (h == 0) {
 			anim.SetFloat ("speed", 0);
