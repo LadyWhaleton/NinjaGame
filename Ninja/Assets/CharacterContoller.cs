@@ -37,6 +37,9 @@ public class CharacterContoller : MonoBehaviour {
 
 	}
 
+	void flip(){
+	}
+
 	void FixedUpdate(){
 		float h = Input.GetAxis ("Horizontal");
 		transform.Translate (Vector3.right * h * Movespeed*Time.deltaTime);
