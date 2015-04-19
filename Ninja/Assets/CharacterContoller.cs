@@ -33,13 +33,13 @@ public class CharacterContoller : MonoBehaviour {
 		if (!grounded && GetComponent<Rigidbody2D>().velocity.y == 0)
 		{
 			grounded = true;
-			print ("on ground");
+			anim.SetBool ("PressJump", false);
 
 		}
 
 		if( Input.GetButtonDown( "Jump" ) && grounded  ){
 			jump = true;
-			grounded = false;
+
 		}
 
 	}
@@ -54,6 +54,7 @@ public class CharacterContoller : MonoBehaviour {
 	void FixedUpdate(){
 		float h = Input.GetAxis ("Horizontal");
 		transform.Translate (Vector3.right * h * Movespeed*Time.deltaTime);
+
 
 		if (h > 0) { 
 			anim.SetFloat ("speed", 1);
@@ -75,6 +76,15 @@ public class CharacterContoller : MonoBehaviour {
 		if (h == 0) {
 			anim.SetFloat ("speed", 0);
 		}
+
+
+		if (jump) {
+			grounded = false;
+			anim.SetBool ("PressJump", true);
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce ));
+			jump = false;
+		}
+
 	}
 
 
