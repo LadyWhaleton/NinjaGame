@@ -11,13 +11,14 @@ public class ResetScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ( Input.GetKeyDown("r") )
+		if (Input.GetKeyDown ("r"))
 			//print ("reset");
-			Application.LoadLevel(Application.loadedLevelName);
-
-		else if ( Input.GetKeyDown("t"))
-		    Application.LoadLevel("Basic Test Lvl");
-
+			Application.LoadLevel (Application.loadedLevelName);
+		else if (Input.GetKeyDown ("t"))
+			Application.LoadLevel ("Basic Test Lvl");
+		else if (Input.GetKey ("q")) {
+			Application.Quit ();
+		}
 	
 	}
 }
