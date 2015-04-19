@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-
 public class CharacterContoller : MonoBehaviour {
 
 	public float Movespeed;
@@ -30,7 +28,7 @@ public class CharacterContoller : MonoBehaviour {
 	void Update () {
 
 		// GetComponent<Rigidbody2D>().velocity.
-		if (!grounded && GetComponent<Rigidbody2D>().velocity.y == 0)
+		if (!grounded && Mathf.Abs( GetComponent<Rigidbody2D>().velocity.y )<= 0.05f)
 		{
 			grounded = true;
 
