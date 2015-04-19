@@ -83,6 +83,7 @@ public class CharacterContoller : MonoBehaviour {
 
 
 		if (jump) {
+			GetComponent<AudioSource>().Play();
 			anim.SetBool ("PressJump", true);
 			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce ));
 			jump = false;
