@@ -30,6 +30,8 @@ public class CharacterContoller : MonoBehaviour {
 		if (!grounded && Mathf.Abs( GetComponent<Rigidbody2D>().velocity.y )<= 0.05f)
 		{
 			grounded = true;
+			anim.SetBool ("PressJump", false);
+
 
 		}
 
