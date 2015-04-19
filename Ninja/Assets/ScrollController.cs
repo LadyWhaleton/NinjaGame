@@ -22,8 +22,14 @@ public class ScrollController : MonoBehaviour {
 			goNextLevel = true;
 		}
 
-		if (goNextLevel)
-			Application.LoadLevel("Level2");
+		if (goNextLevel){
+			if(Application.loadedLevelName == "Basic Test Lvl")
+				Application.LoadLevel("Level2");
+			else if(Application.loadedLevelName == "Level2"){
+				Application.LoadLevel("level3");
+
+			}
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
