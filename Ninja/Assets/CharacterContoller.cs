@@ -10,10 +10,9 @@ public class CharacterContoller : MonoBehaviour {
 	private bool grounded = false;
 	private Animator anim;
 	private bool jump = false;
-	bool isMoving;
-	private float previousVelocity;
-	private float currentVelocity;
 
+
+	bool isMoving;
 
 
 	void Awake(){
@@ -22,17 +21,24 @@ public class CharacterContoller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		previousVelocity = 0;
-		currentVelocity = 0;
+	
 
 	}
 
 	// Update is called once per frame
 	void Update () {
 
+		// GetComponent<Rigidbody2D>().velocity.
+		if (!grounded && GetComponent<Rigidbody2D>().velocity.y == 0)
+		{
+			grounded = true;
+			print ("on ground");
+
+		}
+
 		if( Input.GetButtonDown( "Jump" ) && grounded  ){
 			jump = true;
+			grounded = false;
 		}
 
 	}
